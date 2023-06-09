@@ -29,32 +29,47 @@ def genKey(password):
 
 def encode_file(path):
     tmr = pc()
+
     if not os.path.exists(path):
         print("[!] Error: file does exist", path)
         return
-    with open(path, "rb") as f:
-        sample = f.read()
+    
+    try:
+        with open(path, "rb") as f:
+            sample = f.read()
+    except:
+        print("[!] Error: couldn't read file", path)
+    
     enc = coder.encrypt(sample)
-    with open(path, "wb") as f:
-        f.write(enc)
-    print(f"[+] File encoded in {'{:.4f}'.format(pc() - tmr)} seconds")
+    
+    try:
+        with open(path, "wb") as f:
+            f.write(enc)
+        print(f"[+] File encoded in {'{:.4f}'.format(pc() - tmr)} seconds")
+    except:
+        print("[!] Error: couldn't write file", path)
+    
 
 
 def decode_file(path):
+
     if not os.path.exists(path):
         print("[!] Error: file does exist", path)
         return
 
     tmr = pc()
-    with open(path, "rb") as f:
-        sample = f.read()
+    try:
+        with open(path, "rb") as f:
+            sample = f.read()
+    except:
+        print("[!] Error: couldn't read file", path)
 
     try:
         dec = coder.decrypt(sample)
         with open(path, "wb") as f:
             f.write(dec)
         print(f"[+] File decoded in {'{:.4f}'.format(pc() - tmr)} seconds")
-    except InvalidToken:
+    except:
         print("[!] Error: can not decode file")
 
 
@@ -65,6 +80,7 @@ def getPasswordConfirmation():
         print("[!] Passwords don't match!")
         p1 = getpass("Enter your key: ")
         p2 = getpass("Enter your key again: ")
+    print()
     return p1
 
 def myJoin(filenames, org):
