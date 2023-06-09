@@ -1,4 +1,4 @@
-# Zcode - file encryption
+# Pflock - file encryption
 
 A simple file encryption tool.
 
@@ -12,7 +12,7 @@ Then you can add the script to your enviroment variables to use it anywhere.
 
 ## Usage
 
-`python zcode.py <operation> <targets> -r`
+`python pflock.py <operation> <targets> -r`
 
 - operation parameter:
   - `encode` or `e` to encrypt files.
@@ -27,10 +27,10 @@ Then you can add the script to your enviroment variables to use it anywhere.
 ## Examples
 
 1. encrypt all images in folder
-`zcode e *.jpg *.png`
+`pflock e *.jpg *.png`
 
 2. decrypt all pdf files in current direcroty recursively
-`zcode d *.pdf -r`
+`pflock d *.pdf -r`
 
 3. encrypt specific files
-`zcode e private.txt secret.txt`
+`pflock e private.txt secret.txt`

@@ -77,7 +77,7 @@ def operate(files):
         if os.path.isdir(filename):
             if recursive:
                 operate(myJoin(os.listdir(filename), filename))
-        elif os.path.exists(filename) and filename.find("zcode") == -1:
+        elif os.path.exists(filename) and filename.find("pflock") == -1:
             print("Processing:", os.path.abspath(filename))
             if cmnd == "decode" or cmnd == "d":
                 decode_file(filename)
